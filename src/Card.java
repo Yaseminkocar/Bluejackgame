@@ -2,26 +2,20 @@ public class Card {
     private int number;
     private String colour;
     private int sign;
-    private String dbl;
-    private String flip;
+    private String special;
 
-    public Card(int b, String c) {
 
-        number = b;
-        colour = c;
-    }
 
-    public Card(int i, String j, int k) {
+
+
+    public Card(int i, String j, int k,String c) {
         number = i;
         colour = j;
         sign = k;
-
+        special=c;
     }
 
-    public Card(String t, String m) {
-        dbl = t;
-        flip = m;
-    }
+
 
     public int getValue() {
         return sign * number;
@@ -39,7 +33,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return number + " " + colour + " " + sign;
+        return number + " " + colour + " " + sign+" "+special;
 
     }
 }
