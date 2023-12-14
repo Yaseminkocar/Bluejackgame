@@ -92,6 +92,20 @@ public class Main {
         for (int c = 0; c < 10; c++) {
             System.out.println(("player2's cards are: " + player2[c]));
         }
+
+        System.out.println("player1's hand:");
+        for (int i = 0; i < 4; i++) {
+            int randomInd = rd.nextInt(player1.length);
+           // System.out.println("Card " + (i + 1) + ": " + player1[randomInd]);
+        }
+        System.out.println("X,X,X,X");// We cannot see computer's hand.
+        System.out.println("*********************");
+
+        System.out.println("Player2's hand:");
+        for (int i = 0; i < 4; i++) {
+            int randomInd2 = rd.nextInt(player2.length);
+            System.out.println("Card " + (i + 1) + ": " + player2[randomInd2]);
+        }
     }
 
 
