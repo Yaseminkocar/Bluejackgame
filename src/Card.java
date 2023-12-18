@@ -5,34 +5,22 @@ public class Card {
     private String special;
 
 
-
-
-
     public Card(int i, String j, int k,String c) {
         number = i;
         colour = j;
         sign = k;
         special=c;
     }
-
-
-
-    public int getValue() {
-        return sign * number;
+    public void setValue(int n){
+        number =n;
     }
-
-    public void setSign(int v) {
-        if (v < 0) {
-            sign = -1;
-        }
-        if (v > 0) {
-            sign = 1;
-        }
+    public int getNumber(){
+        return number ;
     }
-
 
     @Override
     public String toString() {
+        if(!special.equals("")) return special;
         return number + " " + colour + " " + sign+" "+special;
 
     }

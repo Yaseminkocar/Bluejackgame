@@ -8,12 +8,12 @@ public class Main {
         int[] number = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         String[] colour = {"blue", "yellow", "red", "green"};
         int[] sign = {+1, -1};
-        String[] special = {"dbl", "flip","."};
+        String[] special = {"dbl", "flip", ""};
         int m = 0;
         for (int i = 0; i < number.length; i++) {
             for (int j = 0; j < colour.length; j++) {
                 for (int k = 1; k < sign.length; k++) {
-                    deck[m] = new Card(number[i], colour[j], sign[0],special[2]);
+                    deck[m] = new Card(number[i], colour[j], sign[0], special[2]);
                     m++;
 
                 }
@@ -32,22 +32,22 @@ public class Main {
             player2[i] = deck[39 - i];
         }
         for (int j = 0; j < 5; j++) {
-           // System.out.println("Player 1's cards are:" + player1[j]);
+            // System.out.println("Player 1's cards are:" + player1[j]);
 
         }
         //System.out.println("************************");
         for (int k = 0; k < 5; k++) {
-          //  System.out.println("Player 2's cards are:" + player2[k]);
+            //  System.out.println("Player 2's cards are:" + player2[k]);
         }
         //System.out.println("with sign cards:");
         Card[] deck1 = new Card[10];
         for (int i = 0; i < 3; i++) {
             for (int p = 0; p < 10; p++) {
-            int selectedNumber = number[rd.nextInt(1, 6)];
-            String selectedColour = colour[rd.nextInt(colour.length)];
-            int selectedSign = sign[rd.nextInt(sign.length)];
+                int selectedNumber = number[rd.nextInt(1, 6)];
+                String selectedColour = colour[rd.nextInt(colour.length)];
+                int selectedSign = sign[rd.nextInt(sign.length)];
 
-                Card randomCard = new Card(selectedNumber, selectedColour, selectedSign,special[2]);
+                Card randomCard = new Card(selectedNumber, selectedColour, selectedSign, special[2]);
                 //System.out.println(randomCard);
                 deck1[p] = randomCard;
             }
@@ -60,28 +60,39 @@ public class Main {
             player2[5 + s] = deck1[3 + s];
         }
         for (int f = 0; f < 8; f++) {
-           // System.out.println("player1's cards:" + player1[f]);
+            // System.out.println("player1's cards:" + player1[f]);
 
         }
-       // System.out.println("******************");
+        // System.out.println("******************");
         for (int g = 0; g < 8; g++) {
-          //  System.out.println("player 2's cards:" + player2[g]);
+            //  System.out.println("player 2's cards:" + player2[g]);
         }
         //String[] special = {"dbl", "flip","."};
         int k = rd.nextInt(1, 11);
         if (k > 0 && k < 9) {
-            for (int i = 8; i < 10; i++) {
-                int t=rd.nextInt(0,10);
-                player1[i] = deck1[t];
-                int p=rd.nextInt(0,10);
-                player2[i] = deck1[p];
-            }
+           // for (int i = 8; i < 10; i++) {
+                int t = rd.nextInt(0, 10);
+                int s = rd.nextInt(0, 10);
+                 player1[8] = deck1[t];
+                 player1[9] = deck1[s];
+                    int p = rd.nextInt(0, 10);
+                    int r = rd.nextInt(0, 10);
+                    if (t != p) {
+                    player2[8] = deck1[p];
+                    player2[9]=deck1[r];
+                }else{
+                        int c=rd.nextInt(0,10);
+                        int y=rd.nextInt(0,10);
+                        player2[8]=deck1[c];
+                        player2[9]=deck1[y];
+                    }
+
         } else if (k >= 9 && k <= 10) {
             int a = rd.nextInt(0, 2);
             for (int j = 8; j < 10; j++) {
-                player1[j] =new Card(0,null,0,special[a]);
-                int b=rd.nextInt(0,2);
-                (player2[j]) =new Card(0,null,0,special[b]);
+                player1[j] = new Card(0, null, 0, special[a]);
+                int b = rd.nextInt(0, 2);
+                (player2[j]) = new Card(0, null, 0, special[b]);
 
             }
         }
@@ -92,22 +103,71 @@ public class Main {
         for (int c = 0; c < 10; c++) {
             System.out.println(("player2's cards are: " + player2[c]));
         }
-
-        System.out.println("player1's hand:");
+        System.out.println("***********************");
+        Card[] hand1 = new Card[4];
+        Card[] hand2 = new Card[4];
+        Shuffleplayer(player1);
+        Shuffleplayer(player2);
+        /*for(int j=0;j<10;j++) {
+            System.out.println(player1[j]);
+        }
+        System.out.println("*******************"); This part for seeing shuffled player arrays.
+        for(int j=0;j<10;j++) {
+            System.out.println(player2[j]);
+        }*/
         for (int i = 0; i < 4; i++) {
-            int randomInd = rd.nextInt(player1.length);
-           // System.out.println("Card " + (i + 1) + ": " + player1[randomInd]);
+            hand1[i] = player1[i];
+            //System.out.println("Card " + (i + 1) + ": " + player1[i]);
+        }
+        for (int i = 0; i < 4; i++) {
+            hand2[i] = player2[i];
+            //System.out.println("Card " + (i + 1) + ": " + player2[i]);
+        }
+        System.out.println("player1's hand:");
+        for (int a = 0; a < 4; a++) {
+            // System.out.println("Card " + (a + 1) + ": " +hand1[a]);
         }
         System.out.println("X,X,X,X");// We cannot see computer's hand.
-        System.out.println("*********************");
-
+        System.out.println("*****************");
         System.out.println("Player2's hand:");
-        for (int i = 0; i < 4; i++) {
-            int randomInd2 = rd.nextInt(player2.length);
-            System.out.println("Card " + (i + 1) + ": " + player2[randomInd2]);
+        for (int b = 0; b < 4; b++) {
+            System.out.println("Card " + (b + 1) + ": " + hand2[b]);
         }
-    }
+        System.out.println("GAME BEGAN");
+        int cpoint=0;
+        int ppoint=0;
+        int comppoint = 0;
+        int playerpoint = 0;
+        while (comppoint < 3 && playerpoint < 3) {
+            Card[] board1 = new Card[9];
+            Card[] board2 = new Card[9];
+            int a = rd.nextInt(10, 29);
 
+            board1[0] = deck[a];//I gave a random card from deck to comp.
+            int b = rd.nextInt(10, 29);
+            if (a != b) {
+                board2[0] = deck[b];
+            } else {
+                int c = rd.nextInt(10, 29);
+                board2[0] = deck[c];
+            }
+            int p = rd.nextInt(10, 29);
+
+            board1[1] = deck[p];
+            int n = rd.nextInt(10, 29);
+            if (p != n) {
+                board2[1] = deck[n];
+            } else {
+                int c = rd.nextInt(10, 29);
+                board2[1] = deck[c];
+            }
+            System.out.println("computer's board is:" + board1[0]);
+            System.out.println("player's board is:" + board2[0]);
+            System.out.println("computer's board is:" + board1[1]);
+            System.out.println("player's board is:" + board2[1]);
+                break;
+            }
+        }
 
     public static void Shuffle(Card[] deck) {
         Random rd = new Random();
@@ -118,10 +178,22 @@ public class Main {
             deck[j] = temp;
         }
     }
-
+    public static void Shuffleplayer(Card[] deck) {
+        Random rd = new Random();
+        for (int i = 0; i < 10; i++) {
+            int j = rd.nextInt(10);
+            Card temp = deck[i];
+            deck[i] = deck[j];
+            deck[j] = temp;
+        }
+    }
     public static void printDeck(Card[] deck) {
         for (Card card : deck) {
             System.out.println(card);
         }
     }
+    /*public int getScore(Card[] player1){
+        hand[p]
+
+    }*/
 }
