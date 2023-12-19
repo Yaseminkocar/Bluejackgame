@@ -367,7 +367,7 @@ public class Main {
             }
             if (getScore(board1) > 20 || getScore2(board2) > 20) {
                 System.out.println("BUST");
-
+break;
             }
 
         }
