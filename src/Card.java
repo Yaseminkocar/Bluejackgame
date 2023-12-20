@@ -17,7 +17,12 @@ public class Card {
     public int getNumber(){
         return number ;
     }
-
+    public String getSpecial(){
+        return special;
+    }
+    public int getSign(){
+        return sign*number;
+    }
     @Override
     public String toString() {
         if(!special.equals("")) return special;

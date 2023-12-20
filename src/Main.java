@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 public class Main {
@@ -140,9 +141,9 @@ public class Main {
         int comppoint = 0;
         int playerpoint = 0;
         while (comppoint < 3 && playerpoint < 3) {
-                Card[] board1 = new Card[9];
-                Card[] board2 = new Card[9];
-                while (getScore(board1) < 17 && getScore(board2) < 17) {
+            Card[] board1 = new Card[9];
+            Card[] board2 = new Card[9];
+            while (getScore(board1) < 17 && getScore2(board2) < 17) {
                 int a = rd.nextInt(10, 29);
 
                 board1[0] = deck[a];//I gave a random card from deck to comp.
@@ -155,6 +156,22 @@ public class Main {
                     } else if (deck[b] == null) {
                         int v = rd.nextInt(10, 29);
                         board2[0] = deck[v];
+                    } if(getScore(board2)>20) {
+                        System.out.println("BUST");
+                        System.out.println(board2[1]);
+                        for (int i = 0; i < hand2.length; i++) {
+                            if (hand2[i] != null) {
+                                if (hand2[i].getSpecial().equals("flip")) {
+                                    System.out.println("please make move.");
+                                    int move = sc.nextInt();
+                                    board2[5] = hand2[move];
+                                    hand2[move] = null;
+                                    int c = board2[3].getNumber() * -1;
+                                    board2[3] = board2[c];
+                                    getScore2(board2);
+                                }
+                            }
+                        }
                     }
                 } else {
                     int c = rd.nextInt(10, 29);
@@ -164,36 +181,32 @@ public class Main {
                     deck[c] = null;
 
                 }
-               /* if(getScore2(board2)>20){
+               /*if(getScore2(board2)>20){
                     System.out.println("If you have a save card please enter card number.");
                     //A save card saves you from getting 20.
                     int x=sc.nextInt();
                     board2[1]=hand2[x];
 
                 }*/
-                    if (getScore(board1) > 20 || getScore2(board2) > 20) {
-                        System.out.println(board1[0]);
-                        System.out.println(board2[0]);
-                        System.out.println("BUST");
-                        break;
-                    }
+
+
                 System.out.println("computer's board is:" + board1[0]);
                 System.out.println("player's board is:" + board2[0]);
                 System.out.println("Your score is:");
-                getScore(board2);
+                System.out.println(getScore2(board2));
                 System.out.println("if you want another card please enter 1.");
                 System.out.println("if you want to stand please enter 2.");
                 int choice = sc.nextInt();
                 if (choice == 1) {
 
-                        int t = rd.nextInt(10, 29);
-                        if (deck[t] != null) {
-                            board1[1] = deck[t];
-                        } else if (deck[t] == null) {
-                            int r = rd.nextInt(10, 29);
-                            board1[1] = deck[r];
-                            deck[r] = null;
-                        }
+                    int t = rd.nextInt(10, 29);
+                    if (deck[t] != null) {
+                        board1[1] = deck[t];
+                    } else if (deck[t] == null) {
+                        int r = rd.nextInt(10, 29);
+                        board1[1] = deck[r];
+                        deck[r] = null;
+                    }
 
 
                     int p = rd.nextInt(10, 29);
@@ -210,56 +223,66 @@ public class Main {
                             deck[y] = null;
                         }
                     }
-
+                    if(getScore(board2)>20) {
+                        System.out.println("BUST");
+                        System.out.println(board2[1]);
+                        for (int i = 0; i < hand2.length; i++) {
+                            if (hand2[i] != null) {
+                                if (hand2[i].getSpecial().equals("flip")) {
+                                    System.out.println("please make move.");
+                                    int move = sc.nextInt();
+                                    board2[5] = hand2[move];
+                                    hand2[move] = null;
+                                    int c = board2[1].getNumber() * -1;
+                                    board2[1] = board2[c];
+                                    getScore2(board2);
+                                }
+                            }
+                        }
+                    }
                 } else if (choice == 2) {
                     System.out.println("waiting for the computer");
                     int t = getScore(board1);
                     int y = getScore2(board2);
 
-                        int p = rd.nextInt(10, 29);
-                        if (deck[p] != null) {
-                            board1[1] = deck[p];
-                        } else if (deck[p] == null) {
-                            int s = rd.nextInt(10, 29);
-                            board1[1] = deck[s];
-                            deck[s] = null;
-                        }
+                    int p = rd.nextInt(10, 29);
+                    if (deck[p] != null) {
+                        board1[1] = deck[p];
+                    } else if (deck[p] == null) {
+                        int s = rd.nextInt(10, 29);
+                        board1[1] = deck[s];
+                        deck[s] = null;
+                    }
 
 
                     if (t > y) {
                         System.out.println("computer wins");
-                        comppoint++;
+
+                        break;
                     } else if (t < y) {
                         System.out.println("you win!!!!!!");
-                        playerpoint++;
+                        break;
                     } else if (t == y) {
                         System.out.println("1-1");
                     }
                     break;
                 }
-                    if (getScore(board1) > 20 || getScore2(board2) > 20) {
-                        System.out.println(board1[1]);
-                        System.out.println(board2[1]);
-                        System.out.println("BUST");
-                        break;
-                    }
-
 
                 System.out.println("computer's board is:" + board1[1]);
                 System.out.println("player's board is:" + board2[1]);
-                    System.out.println("your score is:");
-                    getScore2(board2);
+                System.out.println("your score is:");
+                System.out.println(getScore2(board2));
                 System.out.println("if you want another card please enter 1.");
                 System.out.println("if you want to stand please enter 2.");
                 int choice2 = sc.nextInt();
                 if (choice2 == 1) {
                     int t = rd.nextInt(10, 29);
-                        if (deck[t] != null) {
-                            board1[2] = deck[t];
-                        } else if (deck[t] == null) {
-                            board1[2] = deck[t + 1];
-                            deck[t + 1] = null;
-                        }
+                    if (deck[t] != null) {
+                        board1[2] = deck[t];
+                    } else if (deck[t] == null) {
+                        board1[2] = deck[t + 1];
+                        deck[t + 1] = null;
+                    }
 
                     int g = rd.nextInt(10, 29);
                     if (deck[g] != null) {
@@ -269,44 +292,63 @@ public class Main {
                         board2[2] = deck[c];
                         deck[c] = null;
                     }
-
+                    if(getScore(board2)>20) {
+                        System.out.println("BUST");
+                        System.out.println(board2[1]);
+                        for (int i = 0; i < hand2.length; i++) {
+                            if (hand2[i] != null) {
+                                if (hand2[i].getSpecial().equals("flip")) {
+                                    System.out.println("please make move.");
+                                    int move = sc.nextInt();
+                                    board2[5] = hand2[move];
+                                    hand2[move] = null;
+                                    int c = board2[2].getNumber() * -1;
+                                    board2[2] = board2[c];
+                                    getScore2(board2);
+                                }
+                            }
+                        }
+                    }
                 } else if (choice2 == 2) {
                     System.out.println("waiting for the computer");
                     int p = getScore(board1);
                     int h = getScore2(board2);
                     if (p > h) {
                         System.out.println("computer wins");
-                        comppoint++;
+
+                        break;
                     } else if (p < h) {
                         System.out.println("you win!!!!!!");
-                        playerpoint++;
+
+                        break;
                     } else if (p == h) {
                         System.out.println("1-1");
                     }
                     break;
                 }
-                    if (getScore(board1) > 20 || getScore2(board2) > 20) {
-                        System.out.println(board1[2]);
-                        System.out.println(board2[2]);
-                        System.out.println("BUST");
-                        break;
-                    }
+
+          /* if(getScore(board1)>20||getScore2(board2)>20){
+                System.out.println("BUST");
+                System.out.println(board1[2]);
+                System.out.println(board2[2]);
+            }*/
+
                 System.out.println("computer's board is:" + board1[2]);
                 System.out.println("player's board is:" + board2[2]);
-                    System.out.println("Your score is:");
-                    getScore2(board2);
+                System.out.println("Your score is:");
+                System.out.println(getScore2(board2));
                 System.out.println("if you want another card please enter 1.");
                 System.out.println("if you want to stand please enter 2.");
                 int choice3 = sc.nextInt();
                 if (choice3 == 1) {
                     int e = rd.nextInt(10, 29);
-                        if (deck[e] != null) {
-                            board1[3] = deck[e];
-                        } else if (deck[e] == null) {
-                            int t = rd.nextInt(10, 29);
-                            board1[3] = deck[t];
-                            deck[t] = null;
-                        }
+                    if (deck[e] != null) {
+                        board1[3] = deck[e];
+                    } else if (deck[e] == null) {
+                        int t = rd.nextInt(10, 29);
+                        board1[3] = deck[t];
+                        deck[t] = null;
+                    }
 
 
                     int f = rd.nextInt(10, 29);
@@ -335,43 +377,50 @@ public class Main {
                     int y = getScore2(board2);
                     if (t > y) {
                         System.out.println("computer wins");
-                        comppoint++;
+
+                        break;
                     } else if (t < y) {
                         System.out.println("you win!!!!!!");
-                        playerpoint++;
+
+                        break;
                     } else if (t == y) {
                         System.out.println("1-1");
                     }
-                    break;
-                }
-                    if (getScore(board1) > 20 || getScore2(board2) > 20) {
+
+                    /*if (getScore(board1) > 20 || getScore2(board2) > 20) {
+                        System.out.println("BUST");
                         System.out.println(board1[3]);
                         System.out.println(board2[3]);
-                        System.out.println("BUST");
-                        break;
-                    }
-                    System.out.println("computer's board is:" + board1[3]);
-                    System.out.println("player's board is:" + board2[3]);
-                    System.out.println("Your score is:");
-                    getScore2(board2);
-                    System.out.println("*****************");
-                getScore(board1);
-                getScore2(board2);
-
+                    }*/
+                }
+                System.out.println("computer's board is:" + board1[3]);
+                System.out.println("player's board is:" + board2[3]);
+                System.out.println("Your score is:");
+                System.out.println(getScore2(board2));
+                System.out.println("*****************");
+                System.out.println(getScore(board1));
+                System.out.println(getScore2(board2));
+                if (getScore(board1) == 20) {
+                    System.out.println("Computer wins the tour.");
+                } else if (getScore2(board2) == 20) {
+                    System.out.println("You win the tour.");
+                }
 
                 //System.out.println("computer's board is:" + board1[3]);
                 //System.out.println("player's board is:" + board2[3]);
                 // getScore(board1);
                 // getScore2(board2);
+
+                if (comppoint > playerpoint) {
+                    System.out.println("Computer wins!!!!!!!!!!!!!!!");
+                } else if (playerpoint > comppoint) {
+                    System.out.println("You win!!!!!!!!!!!!!!!");
+                }
                 break;
             }
-            if (getScore(board1) > 20 || getScore2(board2) > 20) {
-                System.out.println("BUST");
-break;
-            }
-
         }
-    }
+        }
+
     public static void Shuffle(Card[] deck) {
         Random rd = new Random();
         for (int i = 0; i < 40; i++) {
@@ -403,7 +452,7 @@ break;
 
             }
         }
-        System.out.println(sum);
+        //System.out.println(sum);
         return sum;
     }
     public static int getScore2(Card[] board2) {
@@ -413,7 +462,7 @@ break;
                 sum2 += c.getNumber();
             }
         }
-        System.out.println(sum2);
+       // System.out.println(sum2);
         return sum2;
     }
 }
