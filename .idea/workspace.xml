@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="832960f8-c0e1-451e-8201-97aba978d1c9" name="Changes" comment="playing">
+    <list default="true" id="832960f8-c0e1-451e-8201-97aba978d1c9" name="Changes" comment="I added to play flip cards">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
@@ -93,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703019726762</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="I added to play flip cards">
+      <created>1703105660569</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1703105660569</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -112,6 +119,7 @@
     <MESSAGE value="I dealt cards to boards and the game began" />
     <MESSAGE value="Game continued" />
     <MESSAGE value="playing" />
-    <option name="LAST_COMMIT_MESSAGE" value="playing" />
+    <MESSAGE value="I added to play flip cards" />
+    <option name="LAST_COMMIT_MESSAGE" value="I added to play flip cards" />
   </component>
 </project>

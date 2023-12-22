@@ -11,7 +11,7 @@ public class Card {
         sign = k;
         special=c;
     }
-    public void setValue(int n){
+    public void setNumber(int n){
         number =n;
     }
     public int getNumber(){
@@ -20,8 +20,12 @@ public class Card {
     public String getSpecial(){
         return special;
     }
+    public void setSign(int t,int k){
+        sign=t;
+        number=k;
+    }
     public int getSign(){
-        return sign*number;
+        return sign;
     }
     @Override
     public String toString() {
