@@ -187,29 +187,31 @@ public class Main {
                      for(int i=0;i<hand1.length;i++) {
                          if (hand1[i].getSpecial().equals("dbl")) {
                              if (hand1[i].getNumber() < 11) {
+                                 System.out.println("comp plays it's dbl card");
+                                 int c = board1[1].getNumber() * 2;
+                                 board1[1].setNumber(c);
                              }
                          }
-                         System.out.println("comp plays it's dbl card");
-                         int c = board1[1].getNumber() * 2;
-                         board1[1].setNumber(c);
+                     }
                          System.out.println("Computer's new score is:");
                          System.out.println(getScore(board1));
 
-                     }
+
 
                      for(int i=0;i<hand2.length;i++) {
                          if (hand2[i].getSpecial().equals("dbl")) {
-
                              System.out.println("ıf you want to play dbl please enter");
                              int x = sc.nextInt();
                              hand2[x] = null;
                              int f = board2[1].getNumber() * 2;
                              board2[1].setNumber(f);
-                             System.out.println("Your new score is:");
-                             System.out.println(getScore2(board2));
                          }
-
                      }
+                     System.out.println("Your new score is:");
+                     System.out.println(getScore2(board2));
+
+
+
                      if (getScore(board1) == 20) {
                          System.out.println("Computer wins.");
                          comppoint++;
@@ -415,27 +417,28 @@ public class Main {
                          if (hand1[i].getSpecial().equals("dbl")) {
                              if (hand1[i].getNumber() < 11) {
                                  System.out.println("comp plays it's dbl card");
+                                 int c = board1[2].getNumber() * 2;
+                                 board1[2].setNumber(c);
                              }
                          }
-                         int c = board1[2].getNumber() * 2;
-                         board1[2].setNumber(c);
-                         System.out.println("Computer's new score is:");
-                         System.out.println(getScore(board1));
-
                      }
+                     System.out.println("Computer's new score is:");
+                     System.out.println(getScore(board1));
+
+
 
                      for(int i=0;i<hand2.length;i++) {
                          if (hand2[i].getSpecial().equals("dbl")) {
                              System.out.println("ıf you want to play dbl please enter");
                              int x = sc.nextInt();
                              hand2[x] = null;
+                             int y = board2[2].getNumber() * 2;
+                             board2[2].setNumber(y);
                          }
-
-                         int y = board2[2].getNumber() * 2;
-                         board2[2].setNumber(y);
-                         System.out.println("Your new score is:");
-                         System.out.println(getScore2(board2));
                      }
+                     System.out.println("Your new score is:");
+                     System.out.println(getScore2(board2));
+
                      if (getScore(board1) == 20) {
                          System.out.println("Computer wins.");
                          System.out.println(getScore(board1));
@@ -631,28 +634,31 @@ public class Main {
                          }
                      }
                      for(int i=0;i<hand1.length;i++) {
-                         if (hand1[i].getSpecial().equals("dbl")) ;
-                         if (hand1[i].getNumber() < 11) {
-                             System.out.println("comp plays it's dbl card");
+                         if (hand1[i].getSpecial().equals("dbl")) {
+                             if (hand1[i].getNumber() < 11) {
+                                 System.out.println("comp plays it's dbl card");
+                                 int c = board1[3].getNumber() * 2;
+                                 board1[3].setNumber(c);
+                             }
                          }
-
-                         int c = board1[3].getNumber() * 2;
-                         board1[3].setNumber(c);
-                         System.out.println("Computer's new score is:");
-                         System.out.println(getScore(board1));
                      }
+                     System.out.println("Computer's new score is:");
+                     System.out.println(getScore(board1));
 
 
-                     for(int i=0;i<hand2.length;i++){
-                         if(hand2[i].getSpecial().equals("dbl"));
-                         System.out.println("ıf you want to play dbl please enter");
-                         int x=sc.nextInt();
-                         hand2[x]=null;
-                         int o=board2[3].getNumber()*2;
-                         board2[3].setNumber(o);
-                         System.out.println("Your new score is:");
-                         System.out.println(getScore2(board2));
+
+                     for(int i=0;i<hand2.length;i++) {
+                         if (hand2[i].getSpecial().equals("dbl")) {
+                             System.out.println("ıf you want to play dbl please enter");
+                             int x = sc.nextInt();
+                             hand2[x] = null;
+                             int o=board2[3].getNumber()*2;
+                             board2[3].setNumber(o);
+                         }
                      }
+                     System.out.println("Your new score is:");
+                     System.out.println(getScore2(board2));
+
                      if (getScore(board1) == 20) {
                          System.out.println("Computer wins.");
                          System.out.println(getScore(board1));
@@ -843,17 +849,16 @@ public class Main {
                          }
                      }
                      for(int i=0;i<hand1.length;i++) {
-                         if (hand1[i].getSpecial().equals("dbl")) ;
-                         if (hand1[i].getNumber() < 11) {
-                             System.out.println("comp plays it's dbl card");
+                         if (hand1[i].getSpecial().equals("dbl")) {
+                             if (hand1[i].getNumber() < 11) {
+                                 System.out.println("comp plays it's dbl card");
+                                 int c=board1[4].getNumber()*2;
+                                 board1[4].setNumber(c);
+                             }
                          }
                      }
-                             int c=board1[4].getNumber()*2;
-                             board1[4].setNumber(c);
-                             System.out.println("Computer's new score is:");
-                             System.out.println(getScore(board1));
-
-
+                     System.out.println("Computer's new score is:");
+                     System.out.println(getScore(board1));
 
                      for(int i=0;i<hand2.length;i++) {
                          if (hand2[i].getSpecial().equals("dbl")) {
@@ -862,10 +867,10 @@ public class Main {
                              hand2[x] = null;
                              int q = board2[4].getNumber() * 2;
                              board2[4].setNumber(q);
-                             System.out.println("Your new score is:");
-                             System.out.println(getScore2(board2));
                          }
                      }
+                     System.out.println("Your new score is:");
+                     System.out.println(getScore2(board2));
                      if (getScore(board1) == 20) {
                          System.out.println("Computer wins.");
                          comppoint++;
@@ -1037,12 +1042,6 @@ public class Main {
                      System.out.println("Computer wins!!!!!!!!!!!!!!!");
                  } else if (playerpoint > comppoint) {
                      System.out.println("You win!!!!!!!!!!!!!!!");
-                 }
-                 for (int i = 0; i < board1.length; i++) {
-                     board1[i] = null;
-                 }
-                 for (int i = 0; i < board2.length; i++) {
-                     board2[i] = null;
                  }
             // }
            break;
